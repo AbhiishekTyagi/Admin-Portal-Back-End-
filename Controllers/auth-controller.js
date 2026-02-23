@@ -64,7 +64,7 @@ const register=async(req,res,next)=>{
         //Send JWT as cookie
        res.cookie("accessToken", token, {
        httpOnly: true,
-       secure: process.env.NODE_ENV === "production",
+       secure: true,
        sameSite: "None",
        maxAge: 15 * 60 * 1000, // 15 minutes
        path: "/",
@@ -206,7 +206,7 @@ const login = async (req, res, next) => {
     // 5️⃣ Send JWT as HttpOnly cookie
     res.cookie("accessToken", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // NODE_ENV = development
+      secure: true, // NODE_ENV = development
       sameSite: "None",
       maxAge: 15 * 60 * 1000, // 15 minutes
       path: "/",
@@ -297,8 +297,8 @@ const logout = async (req, res, next) => {
     // 2️⃣ CLEAR JWT COOKIE ✅
     res.clearCookie("accessToken", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", //NODE_ENV = development
-      sameSite: "strict",
+      secure: true, //NODE_ENV = development
+      sameSite: "None",
       path: "/",
     });
 
