@@ -10,7 +10,7 @@ const port =12300;
 
 // Handling the cors issues
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://admin-portal-front-end.vercel.app",
     method: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
     credentials: true,
   };
@@ -26,6 +26,11 @@ app.use(express.json());
 app.use((req, res, next) => {
   console.log("Protocol:", req.protocol);
   next();
+});
+
+//Backend Root
+app.get("/",(req,res)=>{
+    res.send("Backend is running successfully 🚀");
 });
 
 //Mount the router
