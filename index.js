@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./utils/db.js";
 import errorMiddleware from "./middlewares/error-middlewares.js";
 const app=express();
-const port =12300;
+const port = process.env.PORT || 12300;
 
 // Handling the cors issues
 const corsOptions = {
